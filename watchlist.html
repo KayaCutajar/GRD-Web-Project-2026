@@ -4,8 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Watchlist</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+        body {
+            background-color: #272727;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* The pink glow section */
+        .pink-glow {
+            max-width: 1400px;
+            width: 100%;
+            margin-top: 100px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* The Custom Container with the clipped corner */
+        .anime-list-container {
+            border: 1px solid #444;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: #1a1a1a;
+            /* Clipping the top-right corner */
+            clip-path: polygon(0% 0%, 85% 0%, 100% 15%, 100% 100%, 0% 100%);
+            position: relative;
+        }
+        
+        /* List Styling */
+        .anime-item {
+            border-bottom: 1px solid #333;
+            padding: 15px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .anime-cover {
+            width: 70px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 20px;
+        }
+        
+        .anime-title {
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+        
+        .progress-controls {
+            text-align: right;
+            min-width: 150px;
+        }
+        
+        .status-select {
+            background-color: transparent;
+            color: white;
+            border: 1px solid #444;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin-top: 5px;
+            width: 100px;
+        }
+        
+        .pink-accent {
+            color: #ff00ff;
+        }
+        
+        .diamond-icon {
+            transform: rotate(45deg);
+            display: inline-block;
+            background-color: #ff00ff;
+            width: 12px;
+            height: 12px;
+            margin-right: 5px;
+        }
+        
+    </style>
 </head>
 <body>
+    <!-- Navbar Starts -->
+    <!-- Left Links -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="dropdown">
+                <span class="nav-link dot">FILTER</span>
+                
+                <div class="dropdown-menu">
+                    <a href="#">Time Recommendations</a>
+                    <a href="#">Personal Recommendations</a>
+                </div>
+                
+            </div>
+            <a href="watchlist.html" class="nav-link">LIST</a>
+        </div>
+        
+        <!-- Center Logo-->
+        <div class="nav-center">
+            <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
+        </div>
+        
+        <!-- Right Link -->
+        <div class="nav-right">
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="user.html" class="nav-link">USER</a>
+        </div>
+    </nav>
+    <!-- Navbar Ends -->
     
+    
+    <!-- Header-->
+    <div class="pink-glow">
+        <img src="Images/graphic_pink.svg" alt="graphic_pink">
+    </div>
+    <h2 class="text-center">Level Up Your Anime List.</h2>
+    <!-- Anime List Section -->
+    <div class="container">
+        <div class="anime-list-container">
+            <div class="d-flex justify-content-end mb-2">
+                <small class="text-muted">Progress</small>
+            </div>
+            
+            <!-- Anime Item -->
+            <div class="anime-item">
+                <img src="https://via.placeholder.com/70x100" alt="Cover" class="anime-cover">
+                <div class="anime-title">The Summer Hikaru Died</div>
+                <div class="progress-controls">
+                    <div class="mb-1">
+                        <span class="diamond-icon"></span>
+                        <small>0 / 12</small>
+                        <i class="bi bi-plus-circle-fill pink-accent ms-2"></i>
+                    </div>
+                    <select class="form-select form-select-sm status-select">
+                        <option>Select</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Anime Item 2 (Repeat as needed) -->
+            <div class="anime-item">
+                <img src="https://via.placeholder.com/70x100" alt="Cover" class="anime-cover">
+                <div class="anime-title">Death Parade</div>
+                <div class="progress-controls">
+                    <div class="mb-1">
+                        <span class="diamond-icon"></span>
+                        <small>0 / 12</small>
+                        <i class="bi bi-plus-circle-fill pink-accent ms-2"></i>
+                    </div>
+                    <select class="form-select form-select-sm status-select">
+                        <option>Select</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- More items would go here... -->
+            
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>About Us</h4>
+                <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
+            </div>
+            <div class="footer-links">
+                <a href="contact.html">Contact Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog or News</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
+        <div class="socials">
+            <img src="Images/instagram_icon.svg" alt="">
+            <img src="Images/twitter_icon.svg" alt="">
+            <img src="Images/discord_icon.svg" alt="">
+            <img src="Images/facebook_icon.svg" alt="">
+        </div>
+        <p class="copyright">Copyright © 2026 AniHub</p>
+    </footer>
+    
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
