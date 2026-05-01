@@ -1,0 +1,54 @@
+{margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0b1c2c;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    opacity: 0.7;
+}
+
+.logo {
+    height: 30px;
+}
+
+/* Optional: add dot separator like in image */
+.dot::after {
+    content: "•";
+    margin-left: 30px;
+}
