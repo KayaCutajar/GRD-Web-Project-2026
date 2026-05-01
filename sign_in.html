@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-In Page</title>
+    <link rel="stylesheet" href="Style/bootstrap.min.css">
+    <link rel="stylesheet" href="Style/bootstrapindex.css">
+    
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Split Screen Container */
+        .main-container {
+            height: 100vh;
+            display: flex;
+        }
+        
+        /* Left Side: Slideshow */
+        .slideshow-section {
+            width: 45%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel, .carousel-inner, .carousel-item {
+            height: 100%;
+        }
+        
+        .carousel-item img {
+            object-fit: cover;
+            height: 100vh;
+            width: 100%;
+        }
+        
+        /* Overlay Text on Slideshow */
+        .slideshow-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            z-index: 10;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+        
+        .slideshow-overlay h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Right Side: Form */
+        .form-section {
+            width: 55%;
+            background-color: #222222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px;
+        }
+        
+        .form-wrapper {
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .header-links {
+            font-size: 28px;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+        
+        .login-link {
+            border-left: 2px solid #d63384;
+            color: #d63384;
+            text-decoration: none;
+            padding-left: 15px;
+            margin-left: 15px;
+            opacity: 50%;
+        }
+        
+        .login-link:hover{
+            color: #d63384;
+            opacity: 100%;
+        }
+        
+        /* Form Styling */
+        .form-group {
+            margin-bottom: 30px;
+        }
+        
+        label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .form-control-custom {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            border-radius: 0;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            outline: none;
+        }
+        
+        .form-control-custom:focus {
+            border-bottom-color: #d63384;
+            transition: 0.3s;
+        }
+        
+        
+        /* Submit Button with Neon Glow */
+        .btn-submit {
+            background: transparent;
+            border: 2px solid #d63384;
+            color: white;
+            width: 100%;
+            text-decoration: none;
+            padding: 12px;
+            margin-top: 50px;
+            text-transform: uppercase;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(214, 51, 132, 0.3);
+            transition: 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: #d63384;
+            box-shadow: 0 0 20px rgba(214, 51, 132, 0.6);
+        }
+        
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            color: #ffffff;
+        }
+        
+        .footer-text a{
+            color: #888;
+            text-decoration: none;
+        }
+
+        .footer-text a:hover{
+            color: #d63384;
+        }
+        
+    </style>
+    
+</head>
+<body>
+    <div class="Sign-In-container p-0">
+        <div class="row g-0">
+            
+            <!-- LEFT SIDE: SLIDESHOW -->
+            <div class="slideshow-section">
+                <div id="animeCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="Images/Slidshow1.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/Slideshow2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/Slideshow3.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="Images/Slideshow4.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+                <div class="slideshow-overlay">
+                    <h1>Welcome to Anihub!</h1>
+                    <p>Join us and enjoy the experience.</p>
+                </div>
+            </div>
+            
+            <!-- RIGHT SIDE: FORM -->
+            <section class="form-section">
+                <div class="form-wrapper">
+                    <div class="header-links">
+                        <span>Registration</span>
+                        <a href="log_in.html" class="login-link">Login</a>
+                    </div>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" class="form-control-custom" placeholder="Use_r">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" class="form-control-custom" placeholder="Enter Email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" class="form-control-custom" placeholder="Enter Password">
+                        </div>
+                        
+                        <a href="index.html" class="btn-submit d-block text-center">
+                            Submit
+                        </a>
+                        
+                        <p class="footer-text">
+                            Have an Account? <a href="log_in.html">Log-In</a>
+                        </p>
+                    </form>
+                </div>
+            </section>
+            
+        </div>
+        
+        <script src="Scripts/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
