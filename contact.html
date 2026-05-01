@@ -3,270 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AniHub - Watchlist</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-
+    <title>Homepage</title>
+    <link rel="stylesheet" href="Style/style.css">
+    
     <style>
-        * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #121212;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
-}
-
-/* --- NAVBAR (Enhanced) --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 10%;
-    position: relative;
-}
-
-.nav-left, .nav-right {
-    display: flex;
-    gap: 80px;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: white;
-    letter-spacing: 3px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.nav-center .logo { height: 50px; }
-
-/* Wide Dropdown from previous step */
-.dropdown { position: relative; }
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #1a1a1a;
-    border: 1px solid #B91E8E;
-    min-width: 400px;
-    margin-top: 20px;
-    z-index: 100;
-}
-.dropdown-menu a {
-    display: block;
-    color: white;
-    padding: 20px 30px;
-    text-decoration: none;
-}
-.dropdown:hover .dropdown-menu { display: block; }
-
-/* --- HERO & GLOW --- */
-.hero {
-    text-align: center;
-    padding: 100px 0;
-    position: relative;
-}
-
-.pink-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 150px;
-    background: #B91E8E;
-    filter: blur(120px);
-    opacity: 0.5;
-    z-index: -1;
-}
-
-h1 { font-weight: 300; font-size: 32px; }
-
-/* --- LIST CONTAINER (The Clipped Box) --- */
-.list-container {
-    max-width: 900px;
-    margin: 0 auto 100px auto;
-    border: 1px solid #444;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 40px;
-    /* This creates the cut-off corner on the top right */
-    clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
-}
-
-.list-header {
-    text-align: right;
-    color: #888;
-    margin-bottom: 20px;
-    font-size: 14px;
-}
-
-.anime-item {
-    display: flex;
-    align-items: center;
-    padding: 15px 0;
-    border-bottom: 1px solid #333;
-}
-
-.poster {
-    width: 80px;
-    height: 110px;
-    object-fit: cover;
-    border: 1px solid #B91E8E;
-}
-
-.anime-info { flex: 1; padding-left: 30px; }
-.anime-info h3 { font-size: 16px; font-weight: 400; }
-
-.anime-stats {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-}
-
-.progress-box {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.diamond {
-    width: 12px;
-    height: 12px;
-    background: #B91E8E;
-    transform: rotate(45deg);
-}
-
-.plus-btn {
-    background: #B91E8E;
-    border: none;
-    color: white;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.status-select {
-    background: transparent;
-    border: 1px solid #444;
-    color: white;
-    padding: 5px 15px;
-    width: 120px;
-}
-
-/* --- FOOTER --- */
-.footer {
-    background: black;
-    padding: 80px 10% 40px 10%;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 50px;
-    margin-bottom: 60px;
-}
-
-.footer-about h4 { margin-bottom: 20px; color: #fff; }
-.footer-about p { color: #888; line-height: 1.6; font-size: 14px; }
-
-.footer-links a {
-    display: block;
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.footer-logo {
-    display: block;
-    width: 600px;
-    margin: 40px auto;
-    opacity: 0.9;
-}
-
-.socials {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-bottom: 20px;
-    color: #B91E8E;
-}
-
-.copyright {
-    text-align: center;
-    color: #555;
-    font-size: 12px;
-}
+        .contact-section {
+            display: flex;
+            justify-content: center;
+            padding:  10%;
+        }
+        
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            gap: 80px;
+            align-items: flex-start;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            color: white;
+        }
+        
+        .contact-info p {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .email-display span {
+            display: block;
+            color: #888;
+            font-size: 14px;
+            margin-top: 270px;
+        }
+        
+        .email-display a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        /* Form Container with Clipped Corner */
+        
+        .form-wrapper {
+            flex: 1;
+            border: 1px solid white;
+            padding: 60px;
+            clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+            overflow: hidden;
+        }
+        
+        .input-group {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #555; /* The line under inputs */
+        }
+        
+        .input-group label {
+            display: block;
+            color: white;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .input-group input, 
+        .input-group textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 0;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .input-group input::placeholder,
+        .input-group textarea::placeholder {
+            color: #666;
+        }
+        
+        /* Submit Button with Pink Glow */
+        .submit-btn {
+            width: 100%;
+            background: black;
+            color: white;
+            border: 1px solid #B91E8E;
+            padding: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            /* The Glow from the image */
+            box-shadow: 0 0 15px rgba(185, 30, 142, 0.5);
+        }
+        
+        .submit-btn:hover {
+            background: #B91E8E;
+            box-shadow: 0 0 25px rgba(185, 30, 142, 0.8);
+        }
     </style>
 </head>
 <body>
-
-    <!-- Navbar -->
+    
+    <!-- Navbar Starts -->
+    <!-- Left Links -->
     <nav class="navbar">
         <div class="nav-left">
             <div class="dropdown">
-                <span class="nav-link">FILTER</span>
+                <span class="nav-link dot">FILTER</span>
+                
                 <div class="dropdown-menu">
                     <a href="#">Time Recommendations</a>
                     <a href="#">Personal Recommendations</a>
                 </div>
+                
             </div>
-            <a href="#" class="nav-link">LIST</a>
+            <a href="watchlist.html" class="nav-link">LIST</a>
         </div>
         
+        <!-- Center Logo-->
         <div class="nav-center">
-            <img src="Images/Logo.svg" alt="ANIHUB" class="logo">
+            <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
         </div>
         
+        <!-- Right Link -->
         <div class="nav-right">
-            <a href="#" class="nav-link">CONTACT</a>
-            <a href="#" class="nav-link">USER</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="user.html" class="nav-link">USER</a>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="pink-glow"></div>
-        <h1>Level Up Your Anime List.</h1>
-    </header>
-
-    <!-- Main List Container -->
-    <main class="list-container">
-        <div class="list-header">
-            <span>Progress</span>
-        </div>
-
-        <!-- Repeated Item Structure -->
-        <div class="anime-item">
-            <img src="poster1.jpg" alt="Anime" class="poster">
-            <div class="anime-info">
-                <h3>The Summer Hikaru Died</h3>
-            </div>
-            <div class="anime-stats">
-                <div class="progress-box">
-                    <span class="diamond"></span>
-                    <span class="count">0 / 12</span>
-                    <button class="plus-btn">+</button>
+    <!-- Navbar Ends -->
+    
+    <!-- Contact Us Content Starts -->
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>If you have any questions, feedback, or suggestions, feel free to contact us. We are always happy to hear from our users and improve your experience on our platform. You can reach us by email or through the contact form, and we will respond as soon as possible.</p>
+                
+                <div class="email-display">
+                    <span>Email:</span>
+                    <a href="mailto:anihub@mail.com">anihub@mail.com</a>
                 </div>
-                <select class="status-select">
-                    <option>Select</option>
-                    <option>Watching</option>
-                    <option>Completed</option>
-                </select>
+            </div>
+            
+            <div class="form-wrapper">
+                <form id="contactForm">
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Enter Username" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" id="userEmail" placeholder="Enter Email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="message" placeholder="Enter Your Message!" rows="4" required></textarea>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="sendMail()">Submit</button>
+                </form>
             </div>
         </div>
-        <!-- Add more .anime-item divs here -->
-    </main>
-
+    </section>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -275,7 +185,7 @@ h1 { font-weight: 300; font-size: 32px; }
                 <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
             </div>
             <div class="footer-links">
-                <a href="#">Contact Us</a>
+                <a href="contact.html">Contact Us</a>
                 <a href="#">Careers</a>
                 <a href="#">Blog or News</a>
             </div>
@@ -287,11 +197,14 @@ h1 { font-weight: 300; font-size: 32px; }
         </div>
         <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
         <div class="socials">
-            <!-- Add icon tags here -->
-            <span>IG</span> <span>X</span> <span>DC</span> <span>FB</span>
+            <img src="Images/instagram_icon.svg" alt="">
+            <img src="Images/twitter_icon.svg" alt="">
+            <img src="Images/discord_icon.svg" alt="">
+            <img src="Images/facebook_icon.svg" alt="">
         </div>
         <p class="copyright">Copyright © 2026 AniHub</p>
     </footer>
-
+    
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -33,7 +33,7 @@ body {
 .nav-link {
     text-decoration: none;
     color: white;
-    font-size: 14px;
+    font-size: 18px;
     letter-spacing: 5px;
     transition: 0.3s;
 }
@@ -43,28 +43,28 @@ body {
 }
 
 .logo {
-    height: 70px;
+    height: 100px;
 }
 .dropdown {
     position: relative;
     display: inline-block;
 }
 
-/* Hide the menu by default */
+
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Sits right below the FILTER text */
+    top: 100%;
     left: 0;
-    background-color: #272727; /* Matches your body background */
-    border: 2px solid #B91E8E; /* The pink border from your image */
-    min-width: 1200px; /* Adjust width as needed */
+    background-color: #272727; 
+    border: 2px solid #B91E8E; 
+    min-width: 1200px;
     z-index: 10;
     padding: 10px 0px;
     margin-top: 20px;
 }
 
-/* Links inside the dropdown */
+
 .dropdown-menu a {
     color: white;
     padding: 15px 25px;
@@ -75,7 +75,6 @@ body {
     transition: 0.2s;
 }
 
-/* Hover effect on dropdown links */
 .dropdown-menu a:hover {
     background-color: #636363;
     color: #ffffff;
@@ -95,55 +94,54 @@ body {
 }
 
 /* --- FOOTER --- */
-        .footer {
-            margin-top: 100px;
-            background: black;
-            padding: 80px 10% 40px 10%;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .footer-about h4 { 
-            margin-bottom: 20px; 
-            color: #fff; 
-            margin-top: 0px;
-        }
-        .footer-about p { 
-            color: #888; 
-            line-height: 1.6; 
-            font-size: 14px;
-            width: 300px;
-        }
-        
-        .footer-links a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-        
-        .footer-logo {
-            justify-content: center;
-            display: block;
-            width: 1000px;
-        }
-        
-        .socials {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-            color: #B91E8E;
-            height: 45px;
-        }
-        
-        .copyright {
-            text-align: center;
-            color: #555;
-            font-size: 12px;
-        }
+.footer {
+    background: black;
+    padding: 80px 10% 40px 10%;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+.footer-about h4 { 
+    margin-bottom: 20px; 
+    color: #fff; 
+    margin-top: 0px;
+}
+.footer-about p { 
+    color: #888; 
+    line-height: 1.6; 
+    font-size: 14px;
+    width: 300px;
+}
+
+.footer-links a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-logo {
+    justify-content: center;
+    display: block;
+    width: 1000px;
+}
+
+.socials {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+    color: #B91E8E;
+    height: 45px;
+}
+
+.copyright {
+    text-align: center;
+    color: #555;
+    font-size: 12px;
+}

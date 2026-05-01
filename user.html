@@ -3,9 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <title>Homepage</title>
+    <link rel="stylesheet" href="Style/style.css">
     
+    <style>
+        
+        body {
+            color: white;
+            align-items: center;
+        }
+
+        .banner {
+    width: 1400px;
+    height: 350px; /* Adjust height to match your preference */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end; /* Keeps the avatar at the bottom of the banner */
+    position: relative;
+    
+    /* The Background Magic */
+    background-image: 
+        linear-gradient(to bottom, rgba(26, 26, 26, 0) 60%, #1a1a1a 100%), 
+        url('user_background'); 
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+        .main-container {
+            width: 100%;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* CRITICAL: Space content down so it doesn't overlap the absolute-positioned navbar */
+            padding-top: 100px; 
+            padding-bottom: 50px;
+            min-height: 100vh; /* Ensure the background covers at least the viewport height */
+        }
+
+        .content-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 800px; /* Optional limit for readability */
+        }
+
+        /* --- Avatar and User Info --- */
+        .avatar-container {
+            position: relative; /* Container for the avatar and plus button */
+            margin-bottom: 20px;
+            z-index: 2;
+        }
+
+        .avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%; /* Perfect circle */
+            object-fit: cover;
+            border: 4px solid #fff; /* White circular border */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Subtle depth shadow */
+        }
+
+        .add-button {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 28px;
+            height: 28px;
+            background-color: #B91E8E;
+            color: white;
+            font-size: 1.4em;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+            border: none;
+        }
+
+        .username {
+            font-size: 1.4em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* --- User Statistics (Favorites, Completed, etc.) --- */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #b0b0b0; /* Dimmer label text */
+            font-size: 0.95em;
+        }
+
+        /* --- Settings/Controls Section (Notification, Updates) --- */
+        .controls-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .control-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.05em;
+        }
+
+        .switch-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .status-label {
+            color: #d8d8d8;
+            font-size: 1.0em;
+        }
+
+        /* Modern, stylized check-box/switch */
+        .ios-switch {
+            width: 50px;
+            height: 25px;
+            background-color: #666; /* Base color for OFF state */
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            cursor: pointer;
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .ios-switch-toggle {
+            width: 17px;
+            height: 17px;
+            background-color: white;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* ACTIVE state: background becomes magenta, toggle moves right */
+        .ios-switch.active {
+            background-color: #B91E8E; /* Magenta for ON state */
+        }
+
+        .ios-switch.active .ios-switch-toggle {
+            transform: translateX(32px); /* Moves toggle to the right */
+        }
+
+        /* --- Anime Updates List --- */
+        .updates-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .updates-heading {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            align-self: flex-start; /* Left-align the heading */
+            letter-spacing: 1px;
+        }
+
+        .anime-update-item {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .anime-cover {
+            width: 70px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #000000;
+            box-shadow: 0px 0px 10px #B91E8E;
+        }
+
+        .anime-details {
+            flex-grow: 1; /* Take up all remaining space */
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .anime-title {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background-color: #333;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: #B91E8E;
+        }
+
+        .anime-info-text {
+            color: #b0b0b0;
+            font-size: 0.85em;
+        }
+
+        /* --- Bottom Authentication Buttons with Magenta Glowing Border --- */
+        .auth-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            display: flex;
+            gap: 15px;
+            border: 2px solid transparent;
+            padding: 8px;
+        }
+
+        .btn-submit {
+            background: transparent;
+            border: 2px solid #B91E8E;
+            color: white;
+            width: 30%;
+            text-decoration: none;
+            padding: 12px;
+            text-align: center;
+            margin-top: 25px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(214, 51, 132, 0.3);
+            transition: 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: #B91E8E;
+            box-shadow: 0 0 20px rgba(214, 51, 132, 0.6);
+        }
+
+    </style>
+</head>
+    
+    <!-- Navbar Starts -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="dropdown">
+                <span class="nav-link dot">FILTER</span>
+                
+                <div class="dropdown-menu">
+                    <a href="#">Time Recommendations</a>
+                    <a href="#">Personal Recommendations</a>
+                </div>
+                
+            </div>
+            <a href="watchlist.html" class="nav-link">LIST</a>
+        </div>
+        
+        <div class="nav-center">
+            <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
+        </div>
+        
+        <div class="nav-right">
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="user.html" class="nav-link">USER</a>
+        </div>
+    </nav>
+    <!-- Navbar Ends -->
+
+    <div class="banner">
+        <img src="Images/user_background.jpeg" alt="">
+    </div>
+        
+    <div class="main-container">
+        <div class="content-inner">
+            <div class="banner">
+            <div class="avatar-container">
+                <img src="Images/user_profile.jpeg" alt="User Avatar" class="avatar">
+                <button class="add-button">+</button>
+            </div>
+            <div class="username">USERNAME</div>
+        </div>
+
+            <!-- User Statistics -->
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Favorites</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Ongoing</div>
+                </div>
+            </div>
+
+            <!-- Settings/Controls -->
+            <div class="controls-container">
+                <div class="control-item">
+                    <span>Notifications</span>
+                    <div class="switch-container">
+                        <span class="status-label">OFF</span>
+                        <div class="ios-switch active" onclick="this.classList.toggle('active')">
+                            <div class="ios-switch-toggle"></div>
+                        </div>
+                        <span class="status-label">ON</span>
+                    </div>
+                </div>
+                <div class="control-item">
+                    <span>Updates</span>
+                    <div class="switch-container">
+                        <span class="status-label">OFF</span>
+                        <div class="ios-switch active" onclick="this.classList.toggle('active')">
+                            <div class="ios-switch-toggle"></div>
+                        </div>
+                        <span class="status-label">ON</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="updates-container">
+                <h2 class="updates-heading">Latest Anime Updates</h2>
+
+                <div class="anime-update-item">
+                    <img src="Images/death_parade.jpg" alt="Death Parade Cover" class="anime-cover">
+                    <div class="anime-details">
+                        <div class="anime-title">Death Parade</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 100%;"></div>
+                        </div>
+                        <div class="anime-info-text">Watching 24/24</div>
+                    </div>
+                </div>
+
+                <div class="anime-update-item">
+                    <img src="Images/demon_slayer.jpg" alt="Demon Slayer Cover" class="anime-cover">
+                    <div class="anime-details">
+                        <div class="anime-title">Demon Slayer</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 38%;"></div>
+                        </div>
+                        <div class="anime-info-text">Watching 24/63</div>
+                    </div>
+                </div>
+
+                <div class="anime-update-item">
+                    <img src="Images/gachiakuta.jpg" alt="Gachiakuta Cover" class="anime-cover">
+                    <div class="anime-details">
+                        <div class="anime-title">Gachiakuta</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 50%;"></div>
+                        </div>
+                        <div class="anime-info-text">Watching 12/24</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="sign_in.html" class="btn-submit d-block text-center">
+                Sign-In | Log-In
+            </a>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h4>About Us</h4>
+                <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
+            </div>
+            <div class="footer-links">
+                <a href="contact.html">Contact Us</a>
+                <a href="#">Careers</a>
+                <a href="#">Blog or News</a>
+            </div>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+        <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
+        <div class="socials">
+            <img src="Images/instagram_icon.svg" alt="">
+            <img src="Images/twitter_icon.svg" alt="">
+            <img src="Images/discord_icon.svg" alt="">
+            <img src="Images/facebook_icon.svg" alt="">
+        </div>
+        <p class="copyright">Copyright © 2026 AniHub</p>
+    </footer>
+    
+    <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
