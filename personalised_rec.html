@@ -10,19 +10,9 @@
         .body{
             background-color: #272727;
             color: white;
-            font-family: 'Inter' ;
+            font-family: 'Inter' 'Segoe UI', Tahoma, Verdana, sans-serif;
         }
         
-        .pink-glow {
-            max-width: 1400px;
-            width: 100%;
-            margin-top: 100px;
-            height: 150px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .text-center{
             position: absolute;
             top: 0;
@@ -30,11 +20,138 @@
             display: flex;
             justify-content: space-around;
             margin-top: 180px;
-            text-decoration: none;
+            font-size: 24px;
             color: white;
-            text-decoration: none;
         }
+        .main-page-wrapper {
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .series-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 60px;
+            font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern sans-serif font */
+            color: white;
+        }
+       
+        .section-heading {
+            font-weight: 400;
+            font-size: 26px;
+            margin: 0 0 30px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .series-title {
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0 0 15px 0;
+            letter-spacing: 0.2px;
+        }
+        
+        /* Descriptions */
+        .series-description {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #cccccc; 
+            margin: 0;
+            max-width: 480px;
+        }
+        
+        .series-section {
+            margin-bottom: 60px; /* Spacing between show types */
+        }
+        
+        .series-card {
+            display: flex;
+            align-items: center; /* Vertically align items in the middle */
+            gap: 40px; /* Space between components (poster, text, button) */
+            position: relative;
+        }
+        
+        /* Poster Styling */
+        .series-poster {
+            width: 170px;  /* Match size from image */
+            height: 230px; /* Match size from image */
+            object-fit: cover; /* Ensures image fills the area without stretching */
+            display: block;
+            clip-path: polygon(0% 0%, 82% 0%, 100% 18%, 100% 100%, 0% 100%);
+        }
+        
+        /* Wrapper to create the pink glow *behind* the clipped image */
+        .poster-wrapper {
+            position: relative;
+        }
+        
 
+        /* =========================================
+        4. The Button (Advanced CSS Shape)
+        ========================================= */
+        
+        .add-to-list-btn {
+            margin-left: auto; /* Pushes the button to the far right */
+            background: transparent; /* Text and border provide the colors */
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+        }
+        
+        /* Button hover effect */
+        .add-to-list-btn:hover {
+            transform: scale(1.03); /* Subtle pop on hover */
+        }
+        
+        /* The actual button shape is drawn using pseudo-elements */
+        .add-to-list-btn::before {
+            content: '';
+            display: block;
+            width: 260px;  /* Width of the button body */
+            height: 60px;  /* Height of the button */
+            
+            /* 
+            Drawing the parallelogram shape with a gradient.
+            clip-path trims the left and right sides on an angle.
+            */
+            background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+            
+            /* Subtle neon outline (achieved with a drop-shadow on the element) */
+            filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
+        }
+        
+        /* Button text position */
+        .btn-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center text in the button */
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+        
+        /* =========================================
+        5. Divider Line
+        ========================================= */
+        
+        .series-divider {
+            border: 0;
+            border-top: 1px solid #555555; /* Subtle grey divider */
+            margin: 60px 0px 30px; /* Match section spacing */
+            width: 100%;
+        }
+        
     </style>
     
 </head>
@@ -70,14 +187,93 @@
         </div>
     </nav>
     <!-- Navbar Ends -->
-
-     <h2 class="text-center">
+    
+    <p class="text-center">
         Pick a Recommendation based on Series 
         you have already watched!
-    </h2>
-
+    </p>
+    
     <div class="pink-glow">
         <img src="Images/graphic_pink.svg" alt="graphic_pink">
+    </div>
+    
+    <!-- This wrapper will center the entire section on your page -->
+    <div class="main-page-wrapper">
+        
+        <div class="series-container">
+            
+            <!-- WATCHED SERIES SECTION -->
+            <div class="series-section">
+                <h2 class="section-heading">Watched Series</h2>
+                
+                <div class="series-card">
+                    <!-- Image Wrapper for the Glow -->
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/the_apothecary_diaries.jpg" alt="The Apothecary Diaries" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">The Apothecary Diaries</h3>
+                        <p class="series-description">
+                            Mystery-driven storytelling <br>
+                            Central clever female protagonist, dark or tense atmospheres and focuses on observation and deduction. It has a Slow-burn narrative.
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- RECOMMENDATION SECTION -->
+            <div class="series-section">
+                <h2 class="section-heading">Recommendation</h2>
+                
+                <div class="series-card">
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/raven_of_the_inner_palace.jpg" alt="Raven of the Inner Palace" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">Raven of the Inner Palace</h3>
+                        <p class="series-description">
+                            Each of them is set in a beautifully detailed historical setting, where the main characters use their unique talents to uncover secrets within the royal palace. They offer a great balance of drama, mystery, and suspense.
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+            <hr class="series-divider">
+
+            <div class="series-section">
+                <h2 class="section-heading">Watched Series</h2>
+                
+                <div class="series-card">
+                    <!-- Image Wrapper for the Glow -->
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/the_apothecary_diaries.jpg" alt="The Apothecary Diaries" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">The Apothecary Diaries</h3>
+                        <p class="series-description">
+                            Mystery-driven storytelling <br>
+                            Central clever female protagonist, dark or tense atmospheres and focuses on observation and deduction. It has a Slow-burn narrative.
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+        </div>
     </div>
     
     <!-- Footer -->
