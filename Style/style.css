@@ -1,3 +1,6 @@
+.body{
+    font-family: 'Inter';
+}
 .navbar {
     position: absolute;
     top: 0;
@@ -87,40 +90,6 @@
     left: 0;
     width: 100%;
     height: 15px;
-}
-
-/* -- Parallex Effect --*/
-.section1, .section2 {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-}
-
-.section1::before { 
-    content: "";
-    width: 1400px;
-    height: 800px;
-    position: absolute;
-   background: url(Images/homepage_photo.jpg);
-    background-size: cover;
-    transform: translateZ(-1px) scale(2.2);
-    filter: blur(2px);
-}
-
-.section2 {
-    background-color: #272727;
-}
-
-.text {
-    top: 30%;
-    left: 50%;
-    position: absolute;
-    font-family: 'Inter';
-    font-size: 50px;
-    color: white;
-    text-shadow: 2px 2px 5px rgb(0, 0, 0, 0.3),
-    5px 5px 70px rgba(255, 255, 255, 0.5);
-    transform: scale(1, 1.1) translate(-50%, 10%);
 }
 
 /* --- FOOTER --- */
