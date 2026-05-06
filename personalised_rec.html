@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Personalised Recommendations</title>
     <link rel="stylesheet" href="Style/style.css">
     
     <style>
-        .body{
+        .body, html{
             background-color: #272727;
-            color: white;
-            font-family: 'Inter' 'Segoe UI', Tahoma, Verdana, sans-serif;
+            color: #ffffff;
+            font-family: 'Inter';
         }
         
         .text-center{
@@ -28,8 +28,7 @@
             justify-content: center; 
             align-items: center;
             min-height: 100vh; 
-            margin: 0;
-            padding: 20px;
+            margin-top: -200px;
             box-sizing: border-box;
         }
         
@@ -40,7 +39,7 @@
             font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Modern sans-serif font */
             color: white;
         }
-       
+        
         .section-heading {
             font-weight: 400;
             font-size: 26px;
@@ -82,22 +81,18 @@
             height: 230px; /* Match size from image */
             object-fit: cover; /* Ensures image fills the area without stretching */
             display: block;
-            clip-path: polygon(0% 0%, 82% 0%, 100% 18%, 100% 100%, 0% 100%);
         }
         
         /* Wrapper to create the pink glow *behind* the clipped image */
         .poster-wrapper {
             position: relative;
+            border: 1px black solid;
+            box-shadow: 0px 0px 10px #B91E8E;
         }
         
-
-        /* =========================================
-        4. The Button (Advanced CSS Shape)
-        ========================================= */
-        
         .add-to-list-btn {
-            margin-left: auto; /* Pushes the button to the far right */
-            background: transparent; /* Text and border provide the colors */
+            margin-left: auto;
+            background: transparent;
             border: none;
             padding: 0;
             cursor: pointer;
@@ -105,26 +100,19 @@
             transition: transform 0.2s;
         }
         
-        /* Button hover effect */
+    
         .add-to-list-btn:hover {
-            transform: scale(1.03); /* Subtle pop on hover */
+            transform: scale(1.1);
         }
         
-        /* The actual button shape is drawn using pseudo-elements */
+        /* chat-gpt help */
         .add-to-list-btn::before {
             content: '';
             display: block;
             width: 260px;  /* Width of the button body */
             height: 60px;  /* Height of the button */
-            
-            /* 
-            Drawing the parallelogram shape with a gradient.
-            clip-path trims the left and right sides on an angle.
-            */
             background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
             clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
-            
-            /* Subtle neon outline (achieved with a drop-shadow on the element) */
             filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
         }
         
@@ -138,18 +126,64 @@
             font-weight: 500;
             font-size: 15px;
             letter-spacing: 0.5px;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
         }
-        
-        /* =========================================
-        5. Divider Line
-        ========================================= */
         
         .series-divider {
             border: 0;
-            border-top: 1px solid #555555; /* Subtle grey divider */
+            border-top: 1px solid #ffffff; /* Subtle grey divider */
             margin: 60px 0px 30px; /* Match section spacing */
             width: 100%;
+        }
+        
+        /* Centering Wrapper */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .page-container {
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+            color: white;
+            font-family: sans-serif;
+        }
+        
+        .page-count {
+            font-size: 20px;
+            font-weight: 300; /* Keeps it slim and non-bold */
+            letter-spacing: 2px;
+        }
+        
+        .arrow {
+            font-size: 36px;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s;
+        }
+        
+        /* The left arrow in your image looks slightly dimmed/greyed out */
+        .left-arrow {
+            border: solid rgb(163, 163, 163);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(130deg);
+        }
+        
+        .right-arrow {
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(310deg);
+        }
+        
+        .arrow:hover {
+            opacity: 0.7;
         }
         
     </style>
@@ -249,27 +283,101 @@
             </div>
             
             <hr class="series-divider">
-
+            
             <div class="series-section">
                 <h2 class="section-heading">Watched Series</h2>
                 
                 <div class="series-card">
                     <!-- Image Wrapper for the Glow -->
                     <div class="poster-wrapper pink-glow">
-                        <img src="Images/the_apothecary_diaries.jpg" alt="The Apothecary Diaries" class="series-poster">
+                        <img src="Images/gachiakuta.jpg" alt="Gachiakuta" class="series-poster">
                     </div>
                     
                     <div class="series-details">
-                        <h3 class="series-title">The Apothecary Diaries</h3>
+                        <h3 class="series-title">Gachiakuta</h3>
                         <p class="series-description">
-                            Mystery-driven storytelling <br>
-                            Central clever female protagonist, dark or tense atmospheres and focuses on observation and deduction. It has a Slow-burn narrative.
+                            Society’s inequality and how people labeled as “trash” or outcasts, explores ideas of prejudice, survival, justice, and finding purpose in a world that judges people based on their status or background.
                         </p>
                     </div>
                     
                     <button class="add-to-list-btn">
                         <span class="btn-text">Add to List</span>
                     </button>
+                </div>
+            </div>
+            
+            <div class="series-section">
+                <h2 class="section-heading">Recommendation</h2>
+                
+                <div class="series-card">
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/dorohedoro.jpg" alt="Dorohedoro" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">Dorohedoro</h3>
+                        <p class="series-description">
+                            Each of them is set in a beautifully detailed historical setting, where the main characters use their unique talents to uncover secrets within the royal palace. They offer a great balance of drama, mystery, and suspense.
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+            <hr class="series-divider">
+            
+            <div class="series-section">
+                <h2 class="section-heading">Watched Series</h2>
+                
+                <div class="series-card">
+                    <!-- Image Wrapper for the Glow -->
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/tokyo_revengers.jpg" alt="Tokyo Revengers" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">Tokyo Revengers</h3>
+                        <p class="series-description">
+                            Is about second chances and personal growth, focusing on how changing past choices can shape the future, explores friendship, loyalty and consequences of actions.
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- RECOMMENDATION SECTION -->
+            <div class="series-section">
+                <h2 class="section-heading">Recommendation</h2>
+                
+                <div class="series-card">
+                    <div class="poster-wrapper pink-glow">
+                        <img src="Images/wind_breaker.jpg" alt="Wind Breaker" class="series-poster">
+                    </div>
+                    
+                    <div class="series-details">
+                        <h3 class="series-title">Wind Breaker</h3>
+                        <p class="series-description">
+                            Both main characters are delinquents who gets wrapped up in the world of gang and violence in high school. They end up creating bonds with friends they never expect.    
+                        </p>
+                    </div>
+                    
+                    <button class="add-to-list-btn">
+                        <span class="btn-text">Add to List</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="page-wrapper">
+                <div class="page-container">
+                    <i class="left-arrow"></i>
+                    <span class="page-count">1 / 50</span>
+                    <i class="right-arrow"></i>
                 </div>
             </div>
             

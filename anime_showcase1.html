@@ -3,13 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>The Summer Hikaru Died</title>
     <link rel="stylesheet" href="Style/style.css">
+    
+    <style>
+        
+        body {
+            color: white;
+            align-items: center;
+            font-family: 'Inter';
+        }
+        
+        .banner {
+            width: 1400px;
+            margin-top: -100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            background-position: center top;
+        }
+        
+        .banner-img{
+            height: 800px;
+            width: 1400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, #272727 100%), 
+            url('images/the_summer_hikaru_died_banner.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+        }
+        
+        .main-container {
+            width: 100%;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .series-container {
+            margin-top: -600px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 0 10%;
+        }
+        
+        
+        .series-poster {
+            width: 350px;
+            height: 430px;
+            object-fit: cover;
+            clip-path: polygon(0% 0%, 82% 0%, 100% 18%, 100% 100%, 0% 100%);
+            display: block;
+        }
+        
+        .series-info { 
+            flex: 1; 
+            max-width: 500px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        /* chat-gpt help */
+        .add-to-list-btn::before {
+            content: '';
+            display: block;
+            width: 260px;  /* Width of the button body */
+            height: 60px;  /* Height of the button */
+            background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+
+        }
+        
+        /* Button text position */
+        .btn-text {
+            position: absolute;
+            transform: translate(-50%, -50%); /* Center text in the button */
+            color: white;
+
+            font-size: 15px;
+        }
+        
+        
+    </style>
+    
 </head>
 <body>
     
     <!-- Navbar Starts -->
-    <!-- Left Links -->
     <nav class="navbar">
         <div class="nav-left">
             <div class="dropdown">
@@ -19,26 +109,54 @@
                     <a href="time_rec.html">Time Recommendations</a>
                     <a href="personalised_rec.html">Personal Recommendations</a>
                 </div>
-
+                
             </div>
             <a href="watchlist.html" class="nav-link">LIST</a>
         </div>
         
-        <!-- Center Logo-->
         <div class="nav-center">
             <a href="index.html">
-            <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
+                <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
             </a>
         </div>
         
-        <!-- Right Link -->
         <div class="nav-right">
             <a href="contact.html" class="nav-link">CONTACT</a>
             <a href="user.html" class="nav-link">USER</a>
         </div>
     </nav>
     <!-- Navbar Ends -->
-
+    
+    <div class="main-container">
+        <div class="content-inner">
+            <div class="banner">
+                <div class="banner-img"></div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="series-detail-section">
+        <div class="series-container">
+            
+            <img src="Images/the_summer_hikaru_died.png" alt="The Summer Hikaru Died" class="series-poster">
+            
+            <div class="series-info">
+                <h1 class="series-title">The Summer Hikaru Died</h1>
+                <p class="series-synopsis">
+                    Six months ago, Hikaru vanished for a week. Now, as his best friend Yoshiki senses something amiss and confronts him, the harrowing truth emerges.
+                </p>
+                
+                <div class="meta-tag">| 1 SEASON 12 EPISODES</div>
+                
+                <button class="add-to-list-btn">
+                    <span class="btn-text">Add Now</span>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -66,7 +184,7 @@
         </div>
         <p class="copyright">Copyright © 2026 AniHub</p>
     </footer>
-
+    
     <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
