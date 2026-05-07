@@ -73,25 +73,49 @@
             flex-direction: column; 
             gap: 20px; 
         }
+        
+        .add-to-list-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        
+        .add-to-list-btn:hover {
+            transform: scale(1.1);
+        }
+        
         /* chat-gpt help */
         .add-to-list-btn::before {
-            content: '';
-            display: block;
+            content: 'Add Now';
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 260px;  /* Width of the button body */
             height: 60px;  /* Height of the button */
             background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
             clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
-
+            filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
         }
         
         /* Button text position */
         .btn-text {
-            position: absolute;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%); /* Center text in the button */
             color: white;
-
+            font-weight: 500;
             font-size: 15px;
+            letter-spacing: 0.5px;
         }
+        
         
         
     </style>
@@ -149,7 +173,7 @@
                 <div class="meta-tag">| 1 SEASON 12 EPISODES</div>
                 
                 <button class="add-to-list-btn">
-                    <span class="btn-text">Add Now</span>
+                    <!-- <span class="btn-text">Add Now</span> -->
                 </button>
             </div>
         </div>
