@@ -20,9 +20,12 @@
             transform-style: preserve-3d;
             overflow-x: hidden;
             font-family: 'Inter';
+            color: white;
+            justify-content: center;
+            align-items: center;
         }
         
-        /* -- Parallex Effect --*/
+        /* -- Parallex Effect - Youtube Tutorial --*/
         .section1, .section2 {
             width: 100%;
             min-height: 100vh;
@@ -39,9 +42,9 @@
             background-size: cover;
             transform: translateZ(-1px) scale(2.2);
             filter: blur(5px);
-
+            
         }
-
+        
         .section1::after { 
             content: "";
             width: 100%;
@@ -50,7 +53,7 @@
             background: url(Images/homepage_parallex.png) top center;
             background-size: cover;
         }
-
+        
         .section1 .text {
             top: 10%;
             transform: translateZ(-0.5px) scale(1.5,1.6) translate(-33%, 10%);
@@ -71,6 +74,110 @@
             5px 5px 70px rgba(255, 255, 255, 0.5);
             transform: scale(1, 1.1) translate(-50%, 10%);
         }
+
+        .title{
+            font-family: 'Inter';
+        }
+        
+        .carousel-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            position: relative;
+            justify-content: center;
+            min-width: 100vw;
+            margin-left: 20%;
+            margin-top: -300px;
+        }
+        
+        /* Left Section */
+        .content-side {
+            padding-right: 40px;
+            
+        }
+
+        
+        .title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        
+        .quote {
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 40px;
+            max-width: 300px;
+        }
+        
+        /* Right Section - Posters */
+        .poster-side {
+            display: flex;
+            gap: 25px;
+            overflow: hidden;
+            
+        }
+        
+        .poster-card {
+            min-width: 230px;
+            height: 320px;
+            position: relative;
+            clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
+            box-shadow: 0px px 10px #B91E8E;
+        }
+
+        
+        .poster-card img {
+            width: 100%;
+            height: 100%;   
+        }
+        
+        .add-to-list-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        
+        .add-to-list-btn:hover {
+            opacity: 50%;
+        }
+        
+        /* chat-gpt help */
+        .add-to-list-btn::before {
+            content: 'Add Now';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 260px;  /* Width of the button body */
+            height: 60px;  /* Height of the button */
+            background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+            filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
+        }
+        
+        /* Button text position */
+        .btn-text {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center text in the button */
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
     </style>
 </head>
 <body>
@@ -107,14 +214,78 @@
     <!-- Navbar Ends -->
     
     
-    
-    
+    <!-- Parallex Effect Text -->
     <div class="section1">
         <div class="text">YOUR ANIME JOURNEY <br> STARTS HERE</div>
     </div>
     
     <div class="section2">
         <div class="text">EXPLORE NOW <br> START PICKING FAVORITES</div>
+    </div>
+    <!-- Parallex Effect Text End -->
+    
+    <div class="carousel-container">
+        <div class="content-side">
+            <h3 class="title" >Shingeki no Kyojin</h3>
+            <p class="quote">"An amazing start to an amazing series filled with grief, hype, and sheer will power."</p>
+            
+            <button class="add-to-list-btn"></button>
+        </div>
+        
+        <div class="poster-side">
+            <div class="poster-card">
+                <img src="Images/attack_on_titan.jpg" alt="Attack on Titan">
+            </div>
+            <div class="poster-card">
+                <img src="Images/cyberpunk_edgerunners.jpg" alt="Cyberpunk Edgerunners">
+            </div>
+            <div class="poster-card">
+                <img src="Images/bubble.jpg" alt="Bubble">
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-thumb"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container mt-5">
+        <h4 class="text-white text-center mb-4">EXPLORE SERIES AND MOVIES</h4>
+        <div class="row g-4">
+            <div class="col">
+                <div class="anime-card mini" onclick="setActive(this)">
+                    <img src="ragna-crimson.jpg" alt="Ragna">
+                </div>
+                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
+                <small class="text-secondary">1S 24 EPS</small>
+                
+                <div class="anime-card mini" onclick="setActive(this)">
+                    <img src="ragna-crimson.jpg" alt="Ragna">
+                </div>
+                <p class="text-white mt-2 mb-0">To be Hero X</p>
+                <small class="text-secondary">1S 24 EPS</small>
+                
+                <div class="anime-card mini" onclick="setActive(this)">
+                    <img src="ragna-crimson.jpg" alt="Ragna">
+                </div>
+                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
+                <small class="text-secondary">1S 24 EPS</small>
+                
+                <div class="anime-card mini" onclick="setActive(this)">
+                    <img src="ragna-crimson.jpg" alt="Ragna">
+                </div>
+                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
+                <small class="text-secondary">1S 24 EPS</small>
+                
+                <div class="anime-card mini" onclick="setActive(this)">
+                    <img src="ragna-crimson.jpg" alt="Ragna">
+                </div>
+                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
+                <small class="text-secondary">1S 24 EPS</small>
+            </div>
+        </div>
     </div>
     
     
