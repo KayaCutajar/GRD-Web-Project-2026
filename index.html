@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="Style/bootstrap.min.css">
+    <link rel="stylesheet" href="Style/bootstrapindex.css">
     
     <style>
         
@@ -14,7 +16,6 @@
         body{
             width: 100vw;
             height: 100vh;
-            margin: 0;
             background-color: #272727;
             perspective: 1px;
             transform-style: preserve-3d;
@@ -34,12 +35,11 @@
         }
         
         .section1::before { 
-            content: "";
+            content: "imaged/homepage.png";
             width: 100%;
             height: 100%;
             position: absolute;
             background: url(Images/homepage.png) top center;
-            background-size: cover;
             transform: translateZ(-1px) scale(2.2);
             filter: blur(5px);
             
@@ -61,6 +61,7 @@
         
         .section2 {
             background-color: #272727;
+            min-height: 500px;
         }
         
         .text {
@@ -74,67 +75,50 @@
             5px 5px 70px rgba(255, 255, 255, 0.5);
             transform: scale(1, 1.1) translate(-50%, 10%);
         }
-
+        
         .title{
             font-family: 'Inter';
         }
         
+        /* Center the carousel container inside the slide */
         .carousel-container {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            position: relative;
-            justify-content: center;
-            min-width: 100vw;
-            margin-left: 20%;
-            margin-top: -300px;
-        }
-        
-        /* Left Section */
-        .content-side {
-            padding-right: 40px;
-            
-        }
-
-        
-        .title {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-        
-        .quote {
-            font-style: italic;
-            font-weight: 300;
-            line-height: 1.6;
-            color: #ccc;
-            margin-bottom: 40px;
-            max-width: 300px;
-        }
-        
-        /* Right Section - Posters */
-        .poster-side {
             display: flex;
-            gap: 25px;
-            overflow: hidden;
-            
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            min-height: 400px;
+            margin-top:-50px;
+            background-color: #272727;
+        }
+        
+        
+        /* Style the Bootstrap Arrows */
+        .carousel-control-prev, .carousel-control-next {
+            width: 100px;
+            z-index: 10;
+        }
+        
+        
+        .content-side{
+            padding-right: 70px;
         }
         
         .poster-card {
-            min-width: 230px;
-            height: 320px;
+            width: 230px;  /* Fixed width */
+            height: 320px; /* Fixed height */
+            overflow: hidden;
             position: relative;
             clip-path: polygon(0 0, 85% 0, 100% 15%, 100% 100%, 0 100%);
-            box-shadow: 0px px 10px #B91E8E;
+            box-shadow: 0px 0px 10px #B91E8E;
         }
-
         
         .poster-card img {
             width: 100%;
-            height: 100%;   
+            height: 100%;
+            object-fit: cover; /* This prevents the size difference */
+            display: block;
         }
+        
         
         .add-to-list-btn {
             background: transparent;
@@ -144,11 +128,11 @@
             position: relative;
             transition: transform 0.2s;
             color: white;
-            font-weight: 500;
             font-size: 15px;
             letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
         }
-        
         
         .add-to-list-btn:hover {
             opacity: 50%;
@@ -162,21 +146,115 @@
             align-items: center;
             width: 260px;  /* Width of the button body */
             height: 60px;  /* Height of the button */
-            background: linear-gradient(90deg, #b31b83 0%, #701054 100%); /* Deep Magenta Gradient */
+            background: linear-gradient(90deg, #3d052a 0%, #b91e8e 100%);
             clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
             filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
         }
         
         /* Button text position */
         .btn-text {
+            position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Center text in the button */
-            color: white;
-            font-weight: 500;
-            font-size: 15px;
-            letter-spacing: 0.5px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
+        
+        .anime-card-v2 {
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            
+        }
+        
+        /* The Clipped Poster Effect */
+        .poster-wrapper {
+            width: 100%;
+            aspect-ratio: 2 / 3; /* Keeps posters proportional */
+            position: relative;
+            overflow: hidden;
+            /* This creates the clipped corner look from your image */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 20px  #B91E8E;
+        }
+        
+        .poster-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Hover Effect: Glow and Scale */
+        .anime-card-v2:hover .poster-wrapper {
+            overflow: hidden;
+            transform: translateY(-5px);
+            border-color: #B91E8E;
+        }
+        
+        .card-info{
+            margin-top: 15px;
+        }
+        .card-info p {
+            font-size: 16px;
+            color: #888;
+            
+        }
+        
+        
+        .ranking-list {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* The Vertical White Line */
+        .ranking-list::after {
+            content: "";
+            position: absolute;
+            right: 280px; /* Adjust based on button width */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: white;
+            margin-left: 40px;
+        }
+        
+        .ranking-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        /* Glowing Numbers */
+        .rank-number {
+            font-size: 80px;
+            font-weight: 300;
+            color: white;
+            margin-right: 30px;
+            text-shadow: 0 0 20px rgba(185, 30, 142, 0.8);
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        /* Images */
+        .rank-img {
+            width: 100px;
+            height: 140px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        
+        /* Text Styling */
+        .rank-text h5 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .rank-text p {
+            color: #888;
+            font-size: 1rem;
+        }
+        
+        
         
     </style>
 </head>
@@ -224,99 +302,263 @@
     </div>
     <!-- Parallex Effect Text End -->
     
-    <div class="carousel-container">
-        <div class="content-side">
-            <h3 class="title" >Shingeki no Kyojin</h3>
-            <p class="quote">"An amazing start to an amazing series filled with grief, hype, and sheer will power."</p>
+    <!-- Bootstrap Carousel -->
+    <div id="animeCarousel" class="carousel slide" data-bs-ride="carousel">
+        
+        <button class="carousel-control-prev" type="button" data-bs-target="#animeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#animeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                
+                <div class="carousel-container">
+                    
+                    <div class="content-side">
+                        <h3 class="title">Shingeki no Kyojin</h3>
+                        <p class="quote">"An amazing start to an amazing <br> series filled with grief, hype, and<br>
+                            sheer will power."</p>
+                            <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                        </div>
+                        <div class="poster-side">
+                            <div class="poster-card">
+                                <img src="Images/attack_on_titan.jpg" alt="Attack on Titan">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="carousel-item">
+                    <div class="carousel-container">
+                        <div class="content-side">
+                            <h3 class="title">Cyberpunk Edgerunner</h3>
+                            <p class="quote">“A simple rise to power in a world where everything <br> has a cost—and each step demands more than the last.”</p>
+                            <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                        </div>
+                        <div class="poster-side">
+                            <div class="poster-card">
+                                <img src="Images/cyberpunk_edgerunners.jpg" alt="Cyberpunk Edgerunners">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item">
+                    <div class="carousel-container">
+                        <div class="content-side">
+                            <h3 class="title">Bubble</h3>
+                            <p class="quote">"A visually stunning gravity-defying <br>
+                                journey through a broken Tokyo."</p>
+                                <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                            </div>
+                            <div class="poster-side">
+                                <div class="poster-card">
+                                    <img src="Images/bubble.jpg" alt="Bubble">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="carousel-container">
+                            <div class="content-side">
+                                <h3 class="title">Undead Unluck</h3>
+                                <p class="quote">“The only word that seems to accurately <br> describe what Undead Unluck is, is FUN.“</p>
+                                <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                            </div>
+                            <div class="poster-side">
+                                <div class="poster-card">
+                                    <img src="Images/undead_unluck.jpg" alt="Undead Unluck">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="carousel-container">
+                            <div class="content-side">
+                                <h3 class="title">Neon Genesis Evangelion</h3>
+                                <p class="quote"> “Evangelion is widely considered one of the  <br> most influential anime created in the 1990's. <br>Well known for it's unorthodox storyline.”</p>
+                                <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                            </div>
+                            <div class="poster-side">
+                                <div class="poster-card">
+                                    <img src="Images/evangelion.jpg" alt="Neon Genesis Evangelion">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="carousel-container">
+                            <div class="content-side">
+                                <h3 class="title">Re: Zero</h3>
+                                <p class="quote">“Imagine a show that repackages some  <br>of the most recurring themes in anime <br>today and make it into a fantasy thriller.”</p>
+                                <button class="add-to-list-btn"><span class="btn-text">Add Now</span></button>
+                            </div>
+                            <div class="poster-side">
+                                <div class="poster-card">
+                                    <img src="Images/rezero.jpg" alt="Re: Zero">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grid -->
+        <div class="container-bg">
+            <div class="container mt-5 mb-5 explore-section">
+                <h4 class="text-center mb-5 section-title">EXPLORE SERIES AND MOVIES</h4>
+                
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+                    <div class="col">
+                        <div class="anime-card-v2">
+                            <div class="poster-wrapper">
+                                <img src="Images/ragna_crimson.jpg" alt="Ragna Crimson">
+                            </div>
+                            <div class="card-info">
+                                <h6>Ragna Crimson</h6>
+                                <p>| 1S 24 EPS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="anime-card-v2">
+                            <div class="poster-wrapper">
+                                <img src="Images/to_be_hero_x.jpg" alt="To Be Hero X">
+                            </div>
+                            <div class="card-info">
+                                <h6>To Be Hero X</h6>
+                                <p>| 1S 24 EPS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="anime-card-v2">
+                            <div class="poster-wrapper">
+                                <img src="Images/claymore.jpg" alt="Claymore">
+                            </div>
+                            <div class="card-info">
+                                <h6>Claymore</h6>
+                                <p>| 1S 26 EPS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="anime-card-v2">
+                            <div class="poster-wrapper">
+                                <img src="Images/sword_of_demon_hunter.jpg" alt="Sword of the Demon Hunter">
+                            </div>
+                            <div class="card-info">
+                                <h6>Sword of the Demon Hunter</h6>
+                                <p>| 1S 24 EPS</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="anime-card-v2">
+                            <div class="poster-wrapper">
+                                <img src="Images/magi.jpg" alt="Magi">
+                            </div>
+                            <div class="card-info">
+                                <h6>The Labyrinth of Magic</h6>
+                                <p>| 2S 50 EPS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container mt-5 ranking-section">
+            <h4 class="text-center mb-5 section-title">TOP ANIME SERIES</h4>
             
-            <button class="add-to-list-btn"></button>
+            <div class="ranking-list">
+                <div class="ranking-item d-flex align-items-center">
+                    <div class="rank-number">1</div>
+                    <div class="rank-content d-flex align-items-center">
+                        <img src="Images/friefen.jpg" alt="Frieren" class="rank-img">
+                        <div class="rank-text">
+                            <h3>Sousou no Frieren</h3>
+                            <p>2 Seasons 28 Episodes</p>
+                        </div>
+                    </div>
+                    <div class="button-column ms-auto">
+                        <button class="add-to-list-btn"></button>
+                    </div>
+                </div>
+                
+                <div class="ranking-item d-flex align-items-center">
+                    <div class="rank-number">2</div>
+                    <div class="rank-content d-flex align-items-center">
+                        <img src="Images/fullmetal.jpg" alt="FMAB" class="rank-img">
+                        <div class="rank-text">
+                            <h3>Fullmetal Alchemist: Brotherhood</h3>
+                            <p>1 Season 64 Episodes</p>
+                        </div>
+                    </div>
+                    <div class="button-column ms-auto">
+                        <button class="add-to-list-btn"></button>
+                    </div>
+                </div>
+                
+                <div class="ranking-item d-flex align-items-center">
+                    <div class="rank-number">3</div>
+                    <div class="rank-content d-flex align-items-center">
+                        <img src="Images/steins_gate.jpg" alt="Steins Gate" class="rank-img">
+                        <div class="rank-text">
+                            <h3>Steins: Gate</h3>
+                            <p>2 Seasons 47 Episodes</p>
+                        </div>
+                    </div>
+                    <div class="button-column ms-auto">
+                        <button class="add-to-list-btn"></button>
+                    </div>
+                </div>
+            </div>
         </div>
         
-        <div class="poster-side">
-            <div class="poster-card">
-                <img src="Images/attack_on_titan.jpg" alt="Attack on Titan">
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h4>About Us</h4>
+                    <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="contact.html">Contact Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Blog or News</a>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
-            <div class="poster-card">
-                <img src="Images/cyberpunk_edgerunners.jpg" alt="Cyberpunk Edgerunners">
+            <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
+            <div class="socials">
+                <img src="Images/instagram_icon.svg" alt="">
+                <img src="Images/twitter_icon.svg" alt="">
+                <img src="Images/discord_icon.svg" alt="">
+                <img src="Images/facebook_icon.svg" alt="">
             </div>
-            <div class="poster-card">
-                <img src="Images/bubble.jpg" alt="Bubble">
-            </div>
-        </div>
+            <p class="copyright">Copyright © 2026 AniHub</p>
+        </footer>
         
-        <div class="progress-container">
-            <div class="progress-bar">
-                <div class="progress-thumb"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="container mt-5">
-        <h4 class="text-white text-center mb-4">EXPLORE SERIES AND MOVIES</h4>
-        <div class="row g-4">
-            <div class="col">
-                <div class="anime-card mini" onclick="setActive(this)">
-                    <img src="ragna-crimson.jpg" alt="Ragna">
-                </div>
-                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
-                <small class="text-secondary">1S 24 EPS</small>
-                
-                <div class="anime-card mini" onclick="setActive(this)">
-                    <img src="ragna-crimson.jpg" alt="Ragna">
-                </div>
-                <p class="text-white mt-2 mb-0">To be Hero X</p>
-                <small class="text-secondary">1S 24 EPS</small>
-                
-                <div class="anime-card mini" onclick="setActive(this)">
-                    <img src="ragna-crimson.jpg" alt="Ragna">
-                </div>
-                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
-                <small class="text-secondary">1S 24 EPS</small>
-                
-                <div class="anime-card mini" onclick="setActive(this)">
-                    <img src="ragna-crimson.jpg" alt="Ragna">
-                </div>
-                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
-                <small class="text-secondary">1S 24 EPS</small>
-                
-                <div class="anime-card mini" onclick="setActive(this)">
-                    <img src="ragna-crimson.jpg" alt="Ragna">
-                </div>
-                <p class="text-white mt-2 mb-0">Ragna Crimson</p>
-                <small class="text-secondary">1S 24 EPS</small>
-            </div>
-        </div>
-    </div>
-    
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h4>About Us</h4>
-                <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
-            </div>
-            <div class="footer-links">
-                <a href="contact.html">Contact Us</a>
-                <a href="#">Careers</a>
-                <a href="#">Blog or News</a>
-            </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Cookie Policy</a>
-            </div>
-        </div>
-        <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
-        <div class="socials">
-            <img src="Images/instagram_icon.svg" alt="">
-            <img src="Images/twitter_icon.svg" alt="">
-            <img src="Images/discord_icon.svg" alt="">
-            <img src="Images/facebook_icon.svg" alt="">
-        </div>
-        <p class="copyright">Copyright © 2026 AniHub</p>
-    </footer>
-    
-    <script src="Scripts/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        <script src="Scripts/bootstrap.bundle.min.js"></script>
+    </body>
+    </html>
