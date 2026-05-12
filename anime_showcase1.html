@@ -33,7 +33,7 @@
             justify-content: center;
             text-align: center;
             background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, #272727 100%), 
-            url('images/the_summer_hikaru_died_banner.jpg');
+            url(Images/the_summer_hikaru_died_banner.jpg);
             background-size: cover;
             background-position: center;
             filter: blur(5px);
@@ -75,6 +75,11 @@
             gap: 20px; 
         }
         
+        .series-synopsis p{
+            font-weight: 300px;
+            
+        }
+        
         .add-to-list-btn {
             background: transparent;
             border: none;
@@ -87,10 +92,9 @@
             font-size: 15px;
             letter-spacing: 0.5px;
         }
-        
-        
+    
         .add-to-list-btn:hover {
-            opacity: 50%;
+            transform: scale(1.1);
         }
         
         /* chat-gpt help */
@@ -151,25 +155,42 @@
         
         /* Hover effect for the other items */
         .tab-item:hover:not(.active) {
-            color: #B91E8E;
+            color: #E851BE;
             text-shadow: 0px 0px 8px rgba(185, 30, 142, 0.4);
         }
         
         .character-section {
-            justify-content: center;
             background-color: #272727;
-            padding: 100px 0;
-            position: relative;
-            background-color: #272727;
-            background-image: url(Images/graphic_pink.svg); 
             background-repeat: no-repeat;
             background-position: center;
             background-size: 100%;
             overflow: hidden;
         }
         
-        /* Vertical Line in the middle */
-        .vertical-line {
+        .fictional-section {
+            background-image: url(Images/graphic_pink.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin-top: -120px;
+            margin-bottom: -50px;
+        }
+        
+        .info-container {
+            display: flex;
+            position: relative;
+            width: 900px;
+            justify-content: space-between;
+        }
+        
+        /* The vertical line in the middle */
+        .divider {
             position: absolute;
             left: 50%;
             top: 10%;
@@ -179,34 +200,49 @@
             transform: translateX(-50%);
         }
         
-        .img-glow-wrapper img {
-            width: 100%;
-            height: 100%;
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            width: 45%;
+        }
+        
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .right-align .profile-card {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        
+        /* The Neon Glow Effect */
+        .image-wrapper.glow {
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 15px #ff00ff, inset 0 0 10px #ff00ff;
+            line-height: 0; /* Removes bottom gap under image */
+        }
+        
+        .image-wrapper img {
+            width: 150px;
+            height: 180px;
             object-fit: cover;
         }
-
-        /* Ensure the flex container allows the glow to spread */
-.char-card {
-    padding: 5px; 
-}
-
-.col-md-6.pe-md-5 .char-info {
-    text-align: left;
-}
-
-.col-md-6.ps-md-5.text-end .char-info {
-    text-align: right;
-}
-
-/* Ensure the image wrapper doesn't shrink */
-.img-glow-wrapper {
-    flex-shrink: 0;
-    width: 130px;
-    height: 160px;
-    border: 2px solid #B91E8E; /* Added the pink border from your reference image */
-    box-shadow: 0 0 15px rgba(185, 30, 142, 0.6);
-}
-    
+        
+        .info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        .info p {
+            margin: 5px 0 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
         
         
     </style>
@@ -278,90 +314,78 @@
         </div>
     </div>
     
-    <div class="character-section">
-        <div class="container">
-            <div class="row position-relative">
-                
-                <div class="vertical-line"></div>
-                
-                <div class="col-md-6 pe-md-5">
-                    <div class="char-card d-flex align-items-center mb-5 ">
-                        <div class="img-glow-wrapper">
-                            <img src="Images/hikaru.png" alt="Indou Hikaru">
-                        </div>
-                        <div class="char-info ms-3">
-                            <h5 class="m-0">Indou Hikaru</h5>
-                            <small class="text-secondary">Main</small>
-                        </div>
-                    </div>
-                    
-                    <div class="char-card d-flex align-items-center">
-                        <div class="img-glow-wrapper">
-                            <img src="Images/yoshiki.png" alt="Tsujinaka Yoshiki">
-                        </div>
-                        <div class="char-info ms-3">
-                            <h5 class="m-0">Tsujinaka Yoshiki</h5>
-                            <small class="text-secondary">Main</small>
-                        </div>
-                    </div>
+    <div class="fictional-section">
+        <div class="info-container">
+            <div class="divider"></div>
+            
+            <div class="column left-align">
+                <div class="profile-card">
+                    <div class="image-wrapper glow"
+                    ><img src="Images/hikaru.png" alt="Indou Hikaru">
                 </div>
-                
-                <div class="col-md-6 ps-md-5 text-end">
-                    <div class="char-card d-flex align-items-center justify-content-end mb-5">
-                        <div class="char-info me-3">
-                            <h5 class="m-0 align-it">Umeda Shuuichirou</h5>
-                            <small class="text-secondary">Japanese</small>
-                        </div>
-                        <div class="img-glow-wrapper">
-                            <img src="Images/umeda.webp" alt="Umeda">
-                        </div>
-                    </div>
-                    
-                    <div class="char-card d-flex align-items-center justify-content-end">
-                        <div class="char-info me-3">
-                            <h5 class="m-0">Kobayashi Chiaki</h5>
-                            <small class="text-secondary">Japanese</small>
-                        </div>
-                        <div class="img-glow-wrapper">
-                            <img src="Images/kobayashi.webp" alt="Kobayashi">
-                        </div>
-                    </div>
+                <div class="info">
+                    <h3>Indou Hikaru</h3>
+                    <p>Main</p>
                 </div>
-                
+            </div>
+            
+            <div class="profile-card">
+                <div class="image-wrapper glow"><img src="Images/yoshiki.png" alt="Tsujinaka Yoshiki"></div>
+                <div class="info">
+                    <h3>Tsujinaka Yoshiki</h3>
+                    <p>Main</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column right-align">
+            <div class="profile-card">
+                <div class="info">
+                    <h3>Umeda Shuuichirou</h3>
+                    <p>Japanese</p>
+                </div>
+                <div class="image-wrapper glow"><img src="Images/umeda.webp" alt="Umeda Shuuichirou"></div>
+            </div>
+            
+            <div class="profile-card">
+                <div class="info">
+                    <h3>Kobayashi Chiaki</h3>
+                    <p>Japanese</p>
+                </div>
+                <div class="image-wrapper glow"><img src="Images/kobayashi.webp" alt="Kobayashi Chiaki"></div>
             </div>
         </div>
     </div>
-    
-    
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-about">
-                <h4>About Us</h4>
-                <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
-            </div>
-            <div class="footer-links">
-                <a href="contact.html">Contact Us</a>
-                <a href="#">Careers</a>
-                <a href="#">Blog or News</a>
-            </div>
-            <div class="footer-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Conditions</a>
-                <a href="#">Cookie Policy</a>
-            </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <h4>About Us</h4>
+            <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
         </div>
-        <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
-        <div class="socials">
-            <img src="Images/instagram_icon.svg" alt="">
-            <img src="Images/twitter_icon.svg" alt="">
-            <img src="Images/discord_icon.svg" alt="">
-            <img src="Images/facebook_icon.svg" alt="">
+        <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog or News</a>
         </div>
-        <p class="copyright">Copyright © 2026 AniHub</p>
-    </footer>
-    
-    <script src="Scripts/bootstrap.bundle.min.js"></script>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+    <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
+    <div class="socials">
+        <img src="Images/instagram_icon.svg" alt="">
+        <img src="Images/twitter_icon.svg" alt="">
+        <img src="Images/discord_icon.svg" alt="">
+        <img src="Images/facebook_icon.svg" alt="">
+    </div>
+    <p class="copyright">Copyright © 2026 AniHub</p>
+</footer>
+
+<script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>

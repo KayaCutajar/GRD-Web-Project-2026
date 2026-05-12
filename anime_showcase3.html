@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Summer Hikaru Died</title>
+    <link rel="stylesheet" href="Style/style.css">
+    
+    <style>
+        
+        body {
+            color: white;
+            align-items: center;
+            font-family: 'Inter';
+            background-color: #272727;
+        }
+        
+        .banner {
+            width: 1400px;
+            margin-top: -100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            background-position: center top;
+        }
+        
+        .banner-img{
+            height: 800px;
+            width: 1400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, #272727 100%), 
+            url(Images/haikyuu_bg.avif);
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px);
+            z-index: -1;
+        }
+        
+        .main-container {
+            width: 100%;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .series-container {
+            margin-top: -600px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 0 10%;
+        }
+        
+        
+        .series-poster {
+            width: 350px;
+            height: 430px;
+            object-fit: cover;
+            clip-path: polygon(0% 0%, 82% 0%, 100% 18%, 100% 100%, 0% 100%);
+            display: block;
+        }
+        
+        .series-info { 
+            flex: 1; 
+            max-width: 500px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 20px; 
+        }
+        
+        .series-synopsis p{
+            font-weight: 300px;
+            
+        }
+        
+        .add-to-list-btn {
+            background: transparent;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.2s;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+    
+        .add-to-list-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* chat-gpt help */
+        .add-to-list-btn::before {
+            content: 'Add Now';
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 260px;  /* Width of the button body */
+            height: 60px;  /* Height of the button */
+            background: linear-gradient(90deg, #3d052a 0%, #b91e8e 100%);
+            clip-path: polygon(8% 0%, 100% 0%, 92% 100%, 0% 100%);
+            filter: drop-shadow(-3px 0 0px #b31b83) drop-shadow(3px 0 0px #b31b83);
+        }
+        
+        .btn-text {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+        
+        .tab-container {
+            width: 100%;
+            padding: 60px 0;
+            background-color: transparent; 
+        }
+        
+        .tab-wrapper {
+            display: flex;
+            flex-direction: row; 
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+        }
+        
+        .tab-item {
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 300;
+            cursor: pointer;
+            padding: 12px 28px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        
+        .tab-item.active {
+            background-color: #000000;
+            border: 2px solid #B91E8E;
+            box-shadow: 0px 0px 18px rgba(185, 30, 142, 0.8);
+        }
+        
+        /* Hover effect for the other items */
+        .tab-item:hover:not(.active) {
+            color: #E851BE;
+            text-shadow: 0px 0px 8px rgba(185, 30, 142, 0.4);
+        }
+        
+        .character-section {
+            background-color: #272727;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100%;
+            overflow: hidden;
+        }
+        
+        .fictional-section {
+            background-image: url(Images/graphic_pink.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin-top: -120px;
+            margin-bottom: -50px;
+        }
+        
+        .info-container {
+            display: flex;
+            position: relative;
+            width: 900px;
+            justify-content: space-between;
+        }
+        
+        /* The vertical line in the middle */
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            bottom: 10%;
+            width: 2px;
+            background-color: white;
+            transform: translateX(-50%);
+        }
+        
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            width: 45%;
+        }
+        
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .right-align .profile-card {
+            justify-content: flex-end;
+            text-align: right;
+        }
+        
+        /* The Neon Glow Effect */
+        .image-wrapper.glow {
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 15px #ff00ff, inset 0 0 10px #ff00ff;
+            line-height: 0; /* Removes bottom gap under image */
+        }
+        
+        .image-wrapper img {
+            width: 150px;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        .info p {
+            margin: 5px 0 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        
+        
+    </style>
+    
+</head>
+<body>
+    
+    <!-- Navbar Starts -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="dropdown">
+                <span class="nav-link dot">FILTER</span>
+                
+                <div class="dropdown-menu">
+                    <a href="time_rec.html">Time Recommendations</a>
+                    <a href="personalised_rec.html">Personal Recommendations</a>
+                </div>
+                
+            </div>
+            <a href="watchlist.html" class="nav-link">LIST</a>
+        </div>
+        
+        <div class="nav-center">
+            <a href="index.html">
+                <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
+            </a>
+        </div>
+        
+        <div class="nav-right">
+            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="user.html" class="nav-link">USER</a>
+        </div>
+    </nav>
+    <!-- Navbar Ends -->
+    
+    <div class="main-container">
+        <div class="content-inner">
+            <div class="banner">
+                <div class="banner-img"></div>
+            </div>
+        </div>
+    </div>
+    
+    <section class="series-detail-section">
+        <div class="series-container">
+            
+            <img src="Images/haikyuu_header.png" alt="Haikyuu!!" class="series-poster">
+            
+            <div class="series-info">
+                <h1 class="series-title">Haikyuu!!</h1>
+                <p class="series-synopsis">
+                    Ever since having witnessed the "Little Giant" and his astonishing skills on the volleyball court, Shouyou Hinata has been bewitched by the dynamic nature of the sport.
+                </p>
+                
+                <div class="meta-tag">| 4 SEASONS 85 EPISODES</div>
+                
+                <button class="add-to-list-btn">
+                    <!-- <span class="btn-text">Add Now</span> -->
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <div class="tab-container">
+        <div class="tab-wrapper d-flex justify-content-center align-items-center">
+            <div class="tab-item active">Characters</div>
+            <div class="tab-item">Recommendations</div>
+            <div class="tab-item">Stats</div>
+        </div>
+    </div>
+    
+    <div class="fictional-section">
+        <div class="info-container">
+            <div class="divider"></div>
+            
+            <div class="column left-align">
+                <div class="profile-card">
+                    <div class="image-wrapper glow"
+                    ><img src="Images/hinata.jpg" alt="Hinata Shouyou">
+                </div>
+                <div class="info">
+                    <h3>Hinata Shouyou</h3>
+                    <p>Main</p>
+                </div>
+            </div>
+            
+            <div class="profile-card">
+                <div class="image-wrapper glow"><img src="Images/kageyama.webp" alt="Kageyama Tobio"></div>
+                <div class="info">
+                    <h3>Kageyama Tobio</h3>
+                    <p>Main</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="column right-align">
+            <div class="profile-card">
+                <div class="info">
+                    <h3>Murase Ayumu</h3>
+                    <p>Japanese</p>
+                </div>
+                <div class="image-wrapper glow"><img src="Images/ayumu.webp" alt="Murase Ayumu"></div>
+            </div>
+            
+            <div class="profile-card">
+                <div class="info">
+                    <h3>Ishikawa, Kaito</h3>
+                    <p>Japanese</p>
+                </div>
+                <div class="image-wrapper glow"><img src="Images/kaito.webp" alt="Ishikawa Kaito"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-about">
+            <h4>About Us</h4>
+            <p>Our website is an anime recommendation and tracking platform created to help fans discover new anime and organize their viewing experience.</p>
+        </div>
+        <div class="footer-links">
+            <a href="contact.html">Contact Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Blog or News</a>
+        </div>
+        <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+    <img src="Images/Logo.svg" alt="ANIHUB" class="footer-logo">
+    <div class="socials">
+        <img src="Images/instagram_icon.svg" alt="">
+        <img src="Images/twitter_icon.svg" alt="">
+        <img src="Images/discord_icon.svg" alt="">
+        <img src="Images/facebook_icon.svg" alt="">
+    </div>
+    <p class="copyright">Copyright © 2026 AniHub</p>
+</footer>
+
+<script src="Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>
