@@ -5,13 +5,228 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Recommendations</title>
     <link rel="stylesheet" href="Style/style.css">
-
+    <link rel="stylesheet" href="Scripts/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="Scripts/bootstrap.js">
+    
     <style>
         body {
             background-color: #272727;
             color: #ffffff;
             font-family: 'Inter';
+            margin: 0;
         }
+        
+        .banner {
+            width: 1400px;
+            margin-top: -100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            background-position: center top;
+            overflow: hidden;
+        }
+        
+        .banner-img{
+            height: 400px;
+            width: 1400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, #272727 100%), 
+            url(Images/the_summer_hikaru_died_banner.jpg);
+            background-size: cover;
+            background-position: top 80%;
+            filter: blur(5px);
+            z-index: -1;
+        }
+        
+        .main-container {
+            width: 100%;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .time-page-wrapper {
+            color: white;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            margin: 0;
+            margin-bottom: 100px;
+        }
+        
+        .container-pt1 {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            justify-content: center;
+        }
+        
+        .timeline-wrapper {
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .timeline-track {
+            height: 4px;
+            background-color: white;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .selection-indicator {
+            width: 40px;
+            height: 40px;
+            background-color: #5e1a4b;
+            border-radius: 50%;
+            position: absolute;
+            top: -18px; 
+            left: 265px;
+            z-index: 2;
+            box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.4);
+            opacity: 0.9;
+        }
+        
+        .marker-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        
+        .marker-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60px;
+        }
+        
+        .tick {
+            width: 4px;
+            height: 25px;
+            background-color: white;
+        }
+        
+        .label {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+        }
+        /* Start of anime section */
+        
+        /* Change display to column so grid goes under the title */
+        .container {
+            display: flex;
+            flex-direction: column; /* This puts the grid underneath the H1 */
+            align-items: flex-start; /* Aligns text and grid to the left */
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 0 auto; /* Centers the container on the page */
+            width: 100%;
+        }
+        
+        /* Add this to make the cards actually form a grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+            gap: 10px;
+            width: 100%;
+        }
+
+        .poster-wrapper {
+            width: 230px;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 20px  #B91E8E;
+        }
+        
+        .poster-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .poster-wrapper:hover {
+            transform: scale(1.03);
+        }
+        
+        .container h1{
+            padding-bottom: 30px;
+        }
+        
+        .card-info p{
+            font-size: 16px;
+            color: #888;
+        }
+        
+        .card-info h2{
+            margin-top: 15px;
+        }
+        
+        h2 {
+            font-weight: 400;
+            margin-bottom: 80px;
+            font-size: 2rem;
+        }
+        
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-container {
+            display: flex;
+            align-items: center;
+            gap: 30px; 
+            color: white;
+            font-family: sans-serif;
+        }
+        
+        .page-count {
+            font-size: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .arrow {
+            font-size: 36px;
+            cursor: pointer;
+            user-select: none;
+            transition: 0.2s;
+        }
+        
+        .left-arrow {
+            border: solid rgb(163, 163, 163);
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(130deg);
+        }
+        
+        .right-arrow {
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 4px;
+            transform: rotate(310deg);
+        }
+        
+        .arrow:hover {
+            opacity: 0.7;
+        }
+        
     </style>
 </head>
 <body>
@@ -26,14 +241,14 @@
                     <a href="time_rec.html">Time Recommendations</a>
                     <a href="personalised_rec.html">Personal Recommendations</a>
                 </div>
-
+                
             </div>
             <a href="watchlist.html" class="nav-link">LIST</a>
         </div>
         
         <div class="nav-center">
             <a href="index.html">
-            <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
+                <img src="Images/Logo.svg" alt="ANIHUB Logo" class="logo">
             </a>
         </div>
         
@@ -43,7 +258,129 @@
         </div>
     </nav>
     <!-- Navbar Ends -->
-
+    
+    <div class="main-container">
+        <div class="content-inner">
+            <div class="banner">
+                <div class="banner-img"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="time-page-wrapper">
+        <div class="container-pt1">
+            <h2>Pick Your Desired Time Slot</h2>
+            
+            <div class="timeline-wrapper">
+                <!-- The Horizontal Line -->
+                <div class="timeline-track"></div>
+                
+                <!-- The Selection Indicator (Glowy Purple Circle) -->
+                <div class="selection-indicator"></div>
+                
+                <!-- The Markers and Labels -->
+                <div class="marker-container">
+                    <div class="marker-item">
+                        <div class="tick"></div>
+                        <span class="label">5mins</span>
+                    </div>
+                    <div class="marker-item">
+                        <div class="tick"></div>
+                        <span class="label">20mins</span>
+                    </div>
+                    <div class="marker-item">
+                        <div class="tick"></div>
+                        <span class="label">45mins</span>
+                    </div>
+                    <div class="marker-item">
+                        <div class="tick"></div>
+                        <span class="label">1hr+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <h1 class="main-title">From Quick Episodes to Full<br>Adventures.</h1>
+        
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/ragna_crimson.jpg" alt="Ragna Crimson">
+                </div>
+                <div class="card-info">
+                    <h3>Ragna Crimson</h3>
+                    <p>| 1S 24 EPS</p>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/go_for_it_nakamura.jpg" alt="Go for it Nakamura">
+                </div>
+                <div class="card-info">
+                    <h3>Go for it nakamura</h3>
+                    <p>| 1S 13 EPS</p>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/to_your_eternity.jpg" alt="To your Eternity">
+                </div>
+                <div class="card-info">
+                    <h3>To your Eternity</h3>
+                    <p>| 3S 62 EPS</p>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/dark_gathering.jpg" alt="Dark Gathering">
+                </div>
+                <div class="card-info">
+                    <h3>Dark Gathering</h3>
+                    <p>| 1S 25 EPS</p>
+                </div>
+            </div>
+            
+            <!-- Card 5 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/death_note.jpg" alt="Death Note">
+                </div>
+                <div class="card-info">
+                    <h3>Death Note</h3>
+                    <p>| 1S 37 EPS</p>
+                </div>
+            </div>
+            
+            <!-- Card 6 -->
+            <div class="card">
+                <div class="poster-wrapper">
+                    <img src="Images/love_prism.jpg" alt="Love Through a Prism">
+                </div>
+                <div class="card-info">
+                    <h3>Love Through a Prism</h3>
+                    <p>| 1S 20 EPS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="page-wrapper">
+        <div class="page-container">
+            <i class="left-arrow"></i>
+            <span class="page-count">1 / 50</span>
+            <i class="right-arrow"></i>
+        </div>
+    </div>
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -71,7 +408,7 @@
         </div>
         <p class="copyright">Copyright © 2026 AniHub</p>
     </footer>
-
+    
     <script src="Scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
